@@ -1,0 +1,42 @@
+# Copyright IBM Corp. All Rights Reserved.
+#
+# SPDX-License-Identifier: Apache-2.0
+#
+
+# ---------------------------------------------------------------------------
+# "OrdererOrgs" - Definition of organizations managing orderer nodes
+# ---------------------------------------------------------------------------
+OrdererOrgs:
+  - Name: Orderer
+    Domain: nikodarmawan.local
+    EnableNodeOUs: true
+
+    Specs:
+      - Hostname: orderer
+        SANS:
+          - 127.0.0.1
+
+# ---------------------------------------------------------------------------
+# "PeerOrgs" - Definition of organizations managing peer nodes
+# ---------------------------------------------------------------------------
+PeerOrgs:
+  - Name: sales
+    Domain: sales.nikodarmawan.local
+    EnableNodeOUs: true
+
+    Template:
+      Count: 2
+      SANS:
+        - 127.0.0.1
+    Users:
+      Count: 1
+
+  - Name: contract
+    Domain: contract.nikodarmawan.local
+    EnableNodeOUs: true
+    Template:
+      Count: 2
+      SANS:
+        - 127.0.0.1
+    Users:
+      Count: 1
